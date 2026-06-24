@@ -86,7 +86,7 @@ export default function Contact() {
                     <span className="contact-method-value">038 845 1402 / 033 491 6992</span>
                   </div>
                 </a>
-                <a href="https://wa.me/261388451402" className="contact-method" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/261334916992" className="contact-method" target="_blank" rel="noopener noreferrer">
                   <div className="contact-method-icon whatsapp"><i className="fab fa-whatsapp"></i></div>
                   <div className="contact-method-info">
                     <span className="contact-method-label">WhatsApp</span>
