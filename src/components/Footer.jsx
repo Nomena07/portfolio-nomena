@@ -34,10 +34,10 @@ export default function Footer() {
         <div className="footer-links">
           <h4 className="footer-title">{t.footer.contact}</h4>
           <a href="mailto:tsantanomena7049@gmail.com">tsantanomena7049@gmail.com</a>
-          <a href="tel:+261340000000">+261 34 00 000 00</a>
+          <a href="tel:+261388451402">038 845 1402</a>
           <div className="footer-social">
-            <a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="GitHub"><i className="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tsanta-ravelonjanahary" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Nomena07" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i className="fab fa-github"></i></a>
             <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
           </div>
         </div>

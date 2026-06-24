@@ -79,14 +79,14 @@ export default function Contact() {
                     <span className="contact-method-value">tsantanomena7049@gmail.com</span>
                   </div>
                 </a>
-                <a href="tel:+261340000000" className="contact-method">
+                <a href="tel:+261388451402" className="contact-method">
                   <div className="contact-method-icon"><i className="fas fa-phone"></i></div>
                   <div className="contact-method-info">
                     <span className="contact-method-label">{t.contact.phoneLabel}</span>
-                    <span className="contact-method-value">+261 34 00 000 00</span>
+                    <span className="contact-method-value">038 845 1402 / 033 491 6992</span>
                   </div>
                 </a>
-                <a href="https://wa.me/261340000000" className="contact-method" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/261388451402" className="contact-method" target="_blank" rel="noopener noreferrer">
                   <div className="contact-method-icon whatsapp"><i className="fab fa-whatsapp"></i></div>
                   <div className="contact-method-info">
                     <span className="contact-method-label">WhatsApp</span>
@@ -97,8 +97,8 @@ export default function Contact() {
               <div className="contact-social">
                 <h4 className="social-title">{t.contact.followMe}</h4>
                 <div className="social-links">
-                  <a href="#" className="social-link" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-                  <a href="#" className="social-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
+                  <a href="https://www.linkedin.com/in/tsanta-ravelonjanahary" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+                  <a href="https://github.com/Nomena07" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
                   <a href="#" className="social-link" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
                   <a href="#" className="social-link" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
                 </div>
