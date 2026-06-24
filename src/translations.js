@@ -1,10 +1,10 @@
 const translations = {
   fr: {
     // NAV
-    nav: {
+      nav: {
       home: 'Accueil',
       services: 'Services',
-      portfolio: 'Portfolio',
+      portfolio: 'Projets',
       about: 'À propos',
       contact: 'Contact',
       contactBtn: 'Me contacter',
@@ -224,10 +224,10 @@ const translations = {
   },
   en: {
     // NAV
-    nav: {
+      nav: {
       home: 'Home',
       services: 'Services',
-      portfolio: 'Portfolio',
+      portfolio: 'Projects',
       about: 'About',
       contact: 'Contact',
       contactBtn: 'Contact Me',
