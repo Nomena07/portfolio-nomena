@@ -1,0 +1,151 @@
+/* ========================================
+   DARK MODE - OVERRIDES
+   ======================================== */
+
+/* --- HERO --- */
+.dark .hero {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+}
+.dark .hero::before {
+  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+}
+.dark .hero::after {
+  background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%);
+}
+.dark .hero-badge {
+  background: rgba(37,99,235,0.12);
+  border-color: rgba(37,99,235,0.2);
+}
+.dark .hero-subtitle {
+  color: var(--gray-400);
+}
+.dark .hero-code-block {
+  background: #020617;
+}
+.dark .code-header {
+  background: #0F172A;
+}
+.dark .hero-floating-card {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+.dark .hero-scroll-indicator a {
+  background: var(--bg-card);
+}
+
+/* --- SERVICES --- */
+.dark .services {
+  background: var(--bg-section-alt);
+}
+.dark .service-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.dark .service-card:hover {
+  border-color: transparent;
+}
+
+/* --- PORTFOLIO --- */
+.dark .portfolio-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.dark .filter-btn {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+.dark .filter-btn:hover, .dark .filter-btn.active {
+  color: var(--white);
+}
+
+/* --- TESTIMONIALS --- */
+.dark .testimonials {
+  background: var(--bg-section-alt);
+}
+.dark .testimonial-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.dark .testimonial-text {
+  color: var(--gray-400);
+}
+
+/* --- PROCESS --- */
+.dark .step-content {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+/* --- CONTACT --- */
+.dark .contact {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+}
+.dark .contact-form-wrapper {
+  background: var(--bg-card);
+}
+.dark .contact-info-card {
+  background: var(--bg-card);
+}
+.dark .form-group input,
+.dark .form-group select,
+.dark .form-group textarea {
+  background: var(--bg-section-alt);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+.dark .contact-method {
+  border-color: var(--border-color);
+}
+.dark .contact-method:hover {
+  background: var(--bg-card-hover);
+}
+.dark .social-link {
+  background: var(--bg-section-alt);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* --- ABOUT PAGE --- */
+.dark .about-hero {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+}
+.dark .about-stat-item {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.dark .about-experience-badge {
+  background: var(--bg-card);
+}
+.dark .skill-group {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.dark .product-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.dark .product-image {
+  background: linear-gradient(135deg, #1E293B, #334155);
+}
+.dark .product-card:hover {
+  border-color: transparent;
+}
+.dark .experience-content {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.dark .cert-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+/* --- FOOTER --- */
+.dark .footer {
+  background: #020617;
+}
+
+/* --- BACK TO TOP --- */
+.dark .back-to-top {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
