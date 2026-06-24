@@ -389,4 +389,14 @@
   .about-hero { padding: 120px 0 60px; }
   .about-hero-stats { grid-template-columns: repeat(2, 1fr); }
   .about-cta-card { padding: 40px 24px; }
+  .product-card {
+    min-width: calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
+}
+@media (max-width: 500px) {
+  .product-card {
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
