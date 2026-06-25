@@ -58,6 +58,10 @@ export default function Portfolio() {
                     <i className={p.icon}></i>
                   </div>
                 )}
+                <button className="portfolio-details-btn" onClick={() => setModalProject(p)}>
+                  <i className="fas fa-info-circle"></i>
+                  {lang === 'fr' ? 'Détails' : 'Details'}
+                </button>
               </div>
               <div className="portfolio-info">
                 <span className="portfolio-category">{p.category[lang]}</span>
@@ -75,10 +79,6 @@ export default function Portfolio() {
                     ))}
                   </div>
                 )}
-                <button className="portfolio-details-btn" onClick={() => setModalProject(p)}>
-                  <i className="fas fa-info-circle"></i>
-                  {lang === 'fr' ? 'Détails' : 'Details'}
-                </button>
               </div>
             </div>
           ))}
