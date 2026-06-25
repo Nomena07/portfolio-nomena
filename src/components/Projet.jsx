@@ -29,14 +29,14 @@ export default function Projet() {
   ]
 
   const filtered = active === 'all' ? projects : projects.filter(p => p.cat === active)
-  const visibleProjects = filtered.slice(currentIndex, currentIndex + 2)
-  const totalVisible = Math.ceil(filtered.length / 2)
+  const visibleProjects = filtered.slice(currentIndex, currentIndex + 1)
+  const totalVisible = filtered.length
 
-  const handleCardClick = (index) => {
-    setClickedCard(index)
+  const handleCardClick = () => {
+    setClickedCard(0)
     setTimeout(() => {
       setCurrentIndex((prev) => {
-        const next = prev + 2
+        const next = prev + 1
         return next >= filtered.length ? 0 : next
       })
       setClickedCard(null)
@@ -45,15 +45,15 @@ export default function Projet() {
 
   const goNext = () => {
     setCurrentIndex((prev) => {
-      const next = prev + 2
+      const next = prev + 1
       return next >= filtered.length ? 0 : next
     })
   }
 
   const goPrev = () => {
     setCurrentIndex((prev) => {
-      const next = prev - 2
-      return next < 0 ? filtered.length - 2 : next
+      const next = prev - 1
+      return next < 0 ? filtered.length - 1 : next
     })
   }
 
@@ -125,8 +125,8 @@ export default function Projet() {
           {Array.from({ length: totalVisible }).map((_, i) => (
             <button
               key={i}
-              className={`projet-dot ${i === Math.floor(currentIndex / 2) ? 'active' : ''}`}
-              onClick={() => setCurrentIndex(i * 2)}
+              className={`projet-dot ${i === currentIndex ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(i)}
             ></button>
           ))}
         </div>
