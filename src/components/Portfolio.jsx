@@ -1,21 +1,24 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
 import Modal from './Modal'
 import './Portfolio.css'
 
 const projects = [
-  { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Agence Immobilière Luxe', en: 'Luxury Real Estate' }, result: { fr: '+60% de demandes de contact', en: '+60% contact requests' }, icon: 'fas fa-building', gradient: 'linear-gradient(135deg, #1E3A8A, #059669)', image: `${import.meta.env.BASE_URL}immo.png`, tech: ['Python', 'Django', 'HTML', 'CSS', 'Tailwind', 'JavaScript'], techRoles: { fr: { 'Python': 'Logique backend et traitement des données', 'Django': 'Framework web pour la gestion des biens et utilisateurs', 'HTML': 'Structure des pages et formulaires', 'CSS': 'Mise en page et styles visuels', 'Tailwind': 'Design responsive rapide et moderne', 'JavaScript': 'Interactivité et mises à jour dynamiques' }, en: { 'Python': 'Backend logic and data processing', 'Django': 'Web framework for property and user management', 'HTML': 'Page structure and forms', 'CSS': 'Layout and visual styling', 'Tailwind': 'Fast and modern responsive design', 'JavaScript': 'Interactivity and dynamic updates' } }, desc: { fr: "Application web complète pour une agence immobilière de luxe. Backend avec gestion des biens, comptes utilisateurs, formulaire de contact intelligent et tableau de bord administrateur.", en: "Complete web application for a luxury real estate agency. Backend with property management, user accounts, smart contact form and admin dashboard." }, details: { fr: "Plateforme complète développée avec Django pour gérer les annonces immobilières de luxe. Le système permet aux administrateurs d'ajouter, modifier et supprimer des biens avec photos, descriptions et prix. Les utilisateurs peuvent créer un compte, sauvegarder leurs favoris et contacter les agents directement. Le tableau de bord montre les statistiques de visites et les demandes en temps réel.", en: "Full platform built with Django to manage luxury real estate listings. The system allows administrators to add, edit and delete properties with photos, descriptions and prices. Users can create an account, save favorites and contact agents directly. The dashboard shows visit statistics and requests in real time." } },
-  { cat: 'web', category: { fr: 'Site Vitrine', en: 'Website' }, title: { fr: 'Chumet', en: 'Chumet' }, result: { fr: '+40% de visibilité locale', en: '+40% local visibility' }, icon: 'fas fa-store', gradient: 'linear-gradient(135deg, #10B981, #3B82F6)', image: `${import.meta.env.BASE_URL}chumet.png`, tech: ['HTML', 'CSS', 'Tailwind', 'JavaScript'], techRoles: { fr: { 'HTML': 'Structure sémantique des pages', 'CSS': 'Styles et animations', 'Tailwind': 'Framework CSS pour un design responsive', 'JavaScript': 'Galerie photos et validation de formulaire' }, en: { 'HTML': 'Semantic page structure', 'CSS': 'Styles and animations', 'Tailwind': 'CSS framework for responsive design', 'JavaScript': 'Photo gallery and form validation' } }, desc: { fr: "Site vitrine moderne pour Chumet. Présence en ligne professionnelle avec présentation des services, galerie photos et formulaire de contact.", en: "Modern showcase website for Chumet. Professional online presence with services presentation, photo gallery and contact form." }, details: { fr: "Site vitrine responsive conçu avec Tailwind CSS pour une entreprise locale. Le site présente l'identité de la marque, les services offerts, une galerie photos optimisée et un formulaire de contact avec validation côté client. Le design est moderne, rapide et adapté à tous les écrans.", en: "Responsive showcase site built with Tailwind CSS for a local business. The site presents the brand identity, services offered, optimized photo gallery and contact form with client-side validation. The design is modern, fast and adapted to all screens." } },
-  { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Plateforme E-Learning', en: 'E-Learning Platform' }, result: { fr: '+70% de productivité étudiante', en: '+70% student productivity' }, icon: 'fas fa-graduation-cap', gradient: 'linear-gradient(135deg, #8B5CF6, #06B6D4)', image: `${import.meta.env.BASE_URL}assited.png`, tech: ['Python', 'HTML', 'CSS', 'JavaScript', 'Text Mining'], techRoles: { fr: { 'Python': 'Moteur IA et analyse de textes', 'HTML': 'Structure des pages de cours et quiz', 'CSS': 'Interface éducative moderne', 'JavaScript': 'Quiz interactifs et animations', 'Text Mining': 'Analyse automatique des contenus pour générer des quiz' }, en: { 'Python': 'AI engine and text analysis', 'HTML': 'Course and quiz page structure', 'CSS': 'Modern educational interface', 'JavaScript': 'Interactive quizzes and animations', 'Text Mining': 'Automatic content analysis for quiz generation' } }, desc: { fr: "Plateforme e-learning intelligente assistée par IA pour aider les étudiants. Planification de cours, quiz adaptatifs, aide à la rédaction et suivi de progression personnalisé.", en: "Smart AI-powered e-learning platform to help students. Course planning, adaptive quizzes, writing assistance and personalized progress tracking." }, details: { fr: "Plateforme e-learning intégrant des techniques de Text Mining et d'intelligence artificielle pour assister les étudiants dans leurs études. L'analyse automatique de textes permet de générer des quiz adaptatifs, d'aider à la rédaction de résumés et de personnaliser le suivi de progression. L'interface intuitive facilite la planification des cours et l'accès aux ressources.", en: "E-learning platform integrating Text Mining and AI techniques to assist students in their studies. Automatic text analysis enables generating adaptive quizzes, helping with summary writing and customizing progress tracking. The intuitive interface makes course planning and resource access easy." } },
-  { cat: 'ecommerce', category: { fr: 'E-Commerce', en: 'E-Commerce' }, title: { fr: 'Boutique Mode Afro', en: 'African Fashion Store' }, result: { fr: '+45% de ventes en 3 mois', en: '+45% sales in 3 months' }, icon: 'fas fa-store', gradient: 'linear-gradient(135deg, #7C3AED, #EC4899)', tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'], techRoles: { fr: { 'HTML': 'Structure du catalogue produits', 'CSS': 'Design élégant et attractif', 'JavaScript': 'Panier dynamique et filtres produits', 'PHP': 'Backend pour la gestion des commandes', 'MySQL': 'Base de données produits et clients' }, en: { 'HTML': 'Product catalog structure', 'CSS': 'Elegant and attractive design', 'JavaScript': 'Dynamic cart and product filters', 'PHP': 'Backend for order management', 'MySQL': 'Product and customer database' } }, desc: { fr: "Boutique en ligne complète pour une marque de mode africaine. Catalogue produits, panier intelligent, paiement sécurisé et suivi de commandes.", en: "Complete online store for an African fashion brand. Product catalog, smart cart, secure payment and order tracking." }, details: { fr: "E-commerce complet pour une marque de mode africaine. Le catalogue présente les produits avec photos HD, tailles et couleurs. Le panier intelligent calcule les frais de livraison automatiquement. Le paiement sécurisé intègre plusieurs méthodes. Le suivi de commande en temps réel informe les clients à chaque étape.", en: "Complete e-commerce for an African fashion brand. The catalog presents products with HD photos, sizes and colors. The smart cart calculates shipping costs automatically. Secure payment integrates multiple methods. Real-time order tracking informs customers at every step." } },
-  { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Plateforme Réservation', en: 'Booking Platform' }, result: { fr: 'Gain de 15h/semaine automatisé', en: '15h/week saved through automation' }, icon: 'fas fa-calendar-check', gradient: 'linear-gradient(135deg, #059669, #10B981)', tech: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'MongoDB'], techRoles: { fr: { 'HTML': 'Structure du calendrier et formulaires', 'CSS': 'Interface intuitive et responsive', 'JavaScript': 'Calendrier interactif et mises à jour en temps réel', 'Node.js': 'API backend pour la gestion des réservations', 'MongoDB': 'Base de données des réservations et chambres' }, en: { 'HTML': 'Calendar structure and forms', 'CSS': 'Intuitive and responsive interface', 'JavaScript': 'Interactive calendar and real-time updates', 'Node.js': 'Backend API for reservation management', 'MongoDB': 'Reservation and room database' } }, desc: { fr: "Application de réservation en ligne pour un hôtel. Calendrier interactif, paiement en ligne, confirmation automatique par email et SMS.", en: "Online booking application for a hotel. Interactive calendar, online payment, automatic confirmation by email and SMS." }, details: { fr: "Système de réservation complet pour hôtel avec calendrier interactif montrant les disponibilités en temps réel. Les clients peuvent réserver, payer en ligne et recevoir une confirmation automatique par email et SMS. Le back-office permet de gérer les chambres, les réservations et de générer des rapports.", en: "Complete booking system for hotels with interactive calendar showing real-time availability. Customers can book, pay online and receive automatic confirmation by email and SMS. The back-office allows managing rooms, reservations and generating reports." } },
-  { cat: 'web', category: { fr: 'Site Vitrine', en: 'Website' }, title: { fr: 'Restaurant Gastronomique', en: 'Gastronomic Restaurant' }, result: { fr: 'Notes Google 3.8 → 4.7', en: 'Google rating 3.8 → 4.7' }, icon: 'fas fa-utensils', gradient: 'linear-gradient(135deg, #F59E0B, #EF4444)', tech: ['HTML', 'CSS', 'JavaScript'], techRoles: { fr: { 'HTML': 'Structure du menu et pages', 'CSS': 'Ambiance visuelle élégante', 'JavaScript': 'Menu animé et système de réservation' }, en: { 'HTML': 'Menu and page structure', 'CSS': 'Elegant visual atmosphere', 'JavaScript': 'Animated menu and booking system' } }, desc: { fr: "Site vitrine pour un restaurant gastronomique. Menu interactif, galerie photos, système de réservation de tables et avis clients intégrés.", en: "Showcase website for a gastronomic restaurant. Interactive menu, photo gallery, table reservation system and integrated customer reviews." }, details: { fr: "Site vitrine élégant pour un restaurant gastronomique. Le menu interactif présente les plats avec photos et descriptions. La galerie photos met en valeur l'ambiance et les créations du chef. Le système de réservation permet de choisir date, heure et nombre de convives. Les avis clients Google sont intégrés pour renforcer la confiance.", en: "Elegant showcase site for a gastronomic restaurant. The interactive menu presents dishes with photos and descriptions. The photo gallery highlights the atmosphere and chef's creations. The booking system allows choosing date, time and number of guests. Google customer reviews are integrated to build trust." } },
-  { cat: 'ecommerce', category: { fr: 'E-Commerce', en: 'E-Commerce' }, title: { fr: 'Bijoux & Accessoires', en: 'Jewelry & Accessories' }, result: { fr: '2000+ followers Instagram gagnés', en: '2000+ Instagram followers gained' }, icon: 'fas fa-gem', gradient: 'linear-gradient(135deg, #3B82F6, #8B5CF6)', tech: ['HTML', 'CSS', 'JavaScript', 'Shopify'], techRoles: { fr: { 'HTML': 'Structure du catalogue bijoux', 'CSS': 'Design raffiné et luxe', 'JavaScript': 'Zoom produit et favoris', 'Shopify': 'Plateforme e-commerce complète' }, en: { 'HTML': 'Jewelry catalog structure', 'CSS': 'Refined and luxury design', 'JavaScript': 'Product zoom and favorites', 'Shopify': 'Complete e-commerce platform' } }, desc: { fr: "Boutique en ligne de bijoux artisanaux avec catalogue élégant, zoom sur les produits et intégration Instagram pour booster les ventes.", en: "Handmade jewelry online store with elegant catalog, product zoom and Instagram integration to boost sales." }, details: { fr: "Boutique en ligne de bijoux artisanaux avec un design élégant et raffiné. Le catalogue permet de zoomer sur chaque produit pour voir les détails. L'intégration Instagram affiche les dernières publications et booste l'engagement. Le système de favoris et les notifications de disponibilité fidélisent les clients.", en: "Handmade jewelry online store with elegant and refined design. The catalog allows zooming on each product to see details. Instagram integration displays latest posts and boosts engagement. The favorites system and availability notifications retain customers." } },
+  { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Agence Immobilière Luxe', en: 'Luxury Real Estate' }, result: { fr: '+60% de demandes de contact', en: '+60% contact requests' }, icon: 'fas fa-building', gradient: 'linear-gradient(135deg, #1E3A8A, #059669)', image: `${import.meta.env.BASE_URL}immo.png`, tech: ['Python', 'Django', 'HTML', 'CSS', 'Tailwind', 'JavaScript'], techRoles: { fr: { 'Python': 'Logique backend et traitement des données', 'Django': 'Framework web pour la gestion des biens et utilisateurs', 'HTML': 'Structure des pages et formulaires', 'CSS': 'Mise en page et styles visuels', 'Tailwind': 'Design responsive rapide et moderne', 'JavaScript': 'Interactivité et mises à jour dynamiques' }, en: { 'Python': 'Backend logic and data processing', 'Django': 'Web framework for property and user management', 'HTML': 'Page structure and forms', 'CSS': 'Layout and visual styling', 'Tailwind': 'Fast and modern responsive design', 'JavaScript': 'Interactivity and dynamic updates' } }, desc: { fr: "Application web complète pour une agence immobilière de luxe.", en: "Complete web application for a luxury real estate agency." }, details: { fr: "Plateforme complète développée avec Django pour gérer les annonces immobilières de luxe.", en: "Full platform built with Django to manage luxury real estate listings." } },
+  { cat: 'web', category: { fr: 'Site Vitrine', en: 'Website' }, title: { fr: 'Chumet', en: 'Chumet' }, result: { fr: '+40% de visibilité locale', en: '+40% local visibility' }, icon: 'fas fa-store', gradient: 'linear-gradient(135deg, #10B981, #3B82F6)', image: `${import.meta.env.BASE_URL}chumet.png`, tech: ['HTML', 'CSS', 'Tailwind', 'JavaScript'], techRoles: { fr: { 'HTML': 'Structure sémantique des pages', 'CSS': 'Styles et animations', 'Tailwind': 'Framework CSS pour un design responsive', 'JavaScript': 'Galerie photos et validation de formulaire' }, en: { 'HTML': 'Semantic page structure', 'CSS': 'Styles and animations', 'Tailwind': 'CSS framework for responsive design', 'JavaScript': 'Photo gallery and form validation' } }, desc: { fr: "Site vitrine moderne pour Chumet.", en: "Modern showcase website for Chumet." }, details: { fr: "Site vitrine responsive conçu avec Tailwind CSS pour une entreprise locale.", en: "Responsive showcase site built with Tailwind CSS for a local business." } },
+  { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Plateforme E-Learning', en: 'E-Learning Platform' }, result: { fr: '+70% de productivité étudiante', en: '+70% student productivity' }, icon: 'fas fa-graduation-cap', gradient: 'linear-gradient(135deg, #8B5CF6, #06B6D4)', image: `${import.meta.env.BASE_URL}assited.png`, tech: ['Python', 'HTML', 'CSS', 'JavaScript', 'Text Mining'], techRoles: { fr: { 'Python': 'Moteur IA et analyse de textes', 'HTML': 'Structure des pages de cours et quiz', 'CSS': 'Interface éducative moderne', 'JavaScript': 'Quiz interactifs et animations', 'Text Mining': 'Analyse automatique des contenus pour générer des quiz' }, en: { 'Python': 'AI engine and text analysis', 'HTML': 'Course and quiz page structure', 'CSS': 'Modern educational interface', 'JavaScript': 'Interactive quizzes and animations', 'Text Mining': 'Automatic content analysis for quiz generation' } }, desc: { fr: "Plateforme e-learning intelligente assistée par IA.", en: "Smart AI-powered e-learning platform." }, details: { fr: "Plateforme e-learning intégrant des techniques de Text Mining et d'IA.", en: "E-learning platform integrating Text Mining and AI techniques." } },
+  { cat: 'ecommerce', category: { fr: 'E-Commerce', en: 'E-Commerce' }, title: { fr: 'Boutique Mode Afro', en: 'African Fashion Store' }, result: { fr: '+45% de ventes en 3 mois', en: '+45% sales in 3 months' }, icon: 'fas fa-store', gradient: 'linear-gradient(135deg, #7C3AED, #EC4899)', tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'], techRoles: { fr: { 'HTML': 'Structure du catalogue produits', 'CSS': 'Design élégant et attractif', 'JavaScript': 'Panier dynamique et filtres produits', 'PHP': 'Backend pour la gestion des commandes', 'MySQL': 'Base de données produits et clients' }, en: { 'HTML': 'Product catalog structure', 'CSS': 'Elegant and attractive design', 'JavaScript': 'Dynamic cart and product filters', 'PHP': 'Backend for order management', 'MySQL': 'Product and customer database' } }, desc: { fr: "Boutique en ligne complète pour une marque de mode africaine.", en: "Complete online store for an African fashion brand." }, details: { fr: "E-commerce complet avec catalogue, panier intelligent et paiement sécurisé.", en: "Complete e-commerce with catalog, smart cart and secure payment." } },
+  { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Plateforme Réservation', en: 'Booking Platform' }, result: { fr: 'Gain de 15h/semaine automatisé', en: '15h/week saved through automation' }, icon: 'fas fa-calendar-check', gradient: 'linear-gradient(135deg, #059669, #10B981)', tech: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'MongoDB'], techRoles: { fr: { 'HTML': 'Structure du calendrier et formulaires', 'CSS': 'Interface intuitive et responsive', 'JavaScript': 'Calendrier interactif et mises à jour en temps réel', 'Node.js': 'API backend pour la gestion des réservations', 'MongoDB': 'Base de données des réservations et chambres' }, en: { 'HTML': 'Calendar structure and forms', 'CSS': 'Intuitive and responsive interface', 'JavaScript': 'Interactive calendar and real-time updates', 'Node.js': 'Backend API for reservation management', 'MongoDB': 'Reservation and room database' } }, desc: { fr: "Application de réservation en ligne pour un hôtel.", en: "Online booking application for a hotel." }, details: { fr: "Système de réservation complet avec calendrier interactif et paiement en ligne.", en: "Complete booking system with interactive calendar and online payment." } },
+  { cat: 'web', category: { fr: 'Site Vitrine', en: 'Website' }, title: { fr: 'Restaurant Gastronomique', en: 'Gastronomic Restaurant' }, result: { fr: 'Notes Google 3.8 → 4.7', en: 'Google rating 3.8 → 4.7' }, icon: 'fas fa-utensils', gradient: 'linear-gradient(135deg, #F59E0B, #EF4444)', tech: ['HTML', 'CSS', 'JavaScript'], techRoles: { fr: { 'HTML': 'Structure du menu et pages', 'CSS': 'Ambiance visuelle élégante', 'JavaScript': 'Menu animé et système de réservation' }, en: { 'HTML': 'Menu and page structure', 'CSS': 'Elegant visual atmosphere', 'JavaScript': 'Animated menu and booking system' } }, desc: { fr: "Site vitrine pour un restaurant gastronomique.", en: "Showcase website for a gastronomic restaurant." }, details: { fr: "Site vitrine élégant avec menu interactif et réservation de tables.", en: "Elegant showcase site with interactive menu and table booking." } },
+  { cat: 'ecommerce', category: { fr: 'E-Commerce', en: 'E-Commerce' }, title: { fr: 'Bijoux & Accessoires', en: 'Jewelry & Accessories' }, result: { fr: '2000+ followers Instagram gagnés', en: '2000+ Instagram followers gained' }, icon: 'fas fa-gem', gradient: 'linear-gradient(135deg, #3B82F6, #8B5CF6)', tech: ['HTML', 'CSS', 'JavaScript', 'Shopify'], techRoles: { fr: { 'HTML': 'Structure du catalogue bijoux', 'CSS': 'Design raffiné et luxe', 'JavaScript': 'Zoom produit et favoris', 'Shopify': 'Plateforme e-commerce complète' }, en: { 'HTML': 'Jewelry catalog structure', 'CSS': 'Refined and luxury design', 'JavaScript': 'Product zoom and favorites', 'Shopify': 'Complete e-commerce platform' } }, desc: { fr: "Boutique en ligne de bijoux artisanaux.", en: "Handmade jewelry online store." }, details: { fr: "Boutique élégante avec zoom produit et intégration Instagram.", en: "Elegant store with product zoom and Instagram integration." } },
 ]
 
 export default function Portfolio() {
   const [active, setActive] = useState('all')
   const [modalProject, setModalProject] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [clickedCard, setClickedCard] = useState(null)
+  const gridRef = useRef(null)
   const { lang, t } = useLanguage()
 
   const filters = [
@@ -26,6 +29,37 @@ export default function Portfolio() {
   ]
 
   const filtered = active === 'all' ? projects : projects.filter(p => p.cat === active)
+  const visibleProjects = filtered.slice(currentIndex, currentIndex + 2)
+  const totalVisible = Math.ceil(filtered.length / 2)
+
+  const handleCardClick = (index) => {
+    setClickedCard(index)
+    setTimeout(() => {
+      setCurrentIndex((prev) => {
+        const next = prev + 2
+        return next >= filtered.length ? 0 : next
+      })
+      setClickedCard(null)
+    }, 400)
+  }
+
+  const goNext = () => {
+    setCurrentIndex((prev) => {
+      const next = prev + 2
+      return next >= filtered.length ? 0 : next
+    })
+  }
+
+  const goPrev = () => {
+    setCurrentIndex((prev) => {
+      const next = prev - 2
+      return next < 0 ? filtered.length - 2 : next
+    })
+  }
+
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [active])
 
   return (
     <>
@@ -47,40 +81,65 @@ export default function Portfolio() {
             </button>
           ))}
         </div>
-        <div className="portfolio-grid">
-          {filtered.map((p, i) => (
-            <div className="portfolio-card animate-on-scroll" key={`${p.title.en}-${i}`}>
-              <div className="portfolio-image">
-                {p.image ? (
-                  <img src={p.image} alt={p.title[lang]} className="portfolio-img" />
-                ) : (
-                  <div className="portfolio-placeholder" style={{ background: p.gradient }}>
-                    <i className={p.icon}></i>
-                  </div>
-                )}
-                <button className="portfolio-details-btn" onClick={() => setModalProject(p)}>
-                  <i className="fas fa-info-circle"></i>
-                  {lang === 'fr' ? 'Détails' : 'Details'}
-                </button>
-              </div>
-              <div className="portfolio-info">
-                <span className="portfolio-category">{p.category[lang]}</span>
-                <div className="portfolio-title-row">
-                  <h3 className="portfolio-title">{p.title[lang]}</h3>
+
+        <div className="portfolio-carousel">
+          <button className="portfolio-nav-btn portfolio-nav-prev" onClick={goPrev}>
+            <i className="fas fa-chevron-left"></i>
+          </button>
+
+          <div className="portfolio-grid" ref={gridRef}>
+            {visibleProjects.map((p, i) => (
+              <div
+                className={`portfolio-card animate-on-scroll ${clickedCard === i ? 'card-exit' : 'card-enter'}`}
+                key={`${p.title.en}-${currentIndex}-${i}`}
+                onClick={() => handleCardClick(i)}
+              >
+                <div className="portfolio-image">
+                  {p.image ? (
+                    <img src={p.image} alt={p.title[lang]} className="portfolio-img" />
+                  ) : (
+                    <div className="portfolio-placeholder" style={{ background: p.gradient }}>
+                      <i className={p.icon}></i>
+                    </div>
+                  )}
+                  <button className="portfolio-details-btn" onClick={(e) => { e.stopPropagation(); setModalProject(p) }}>
+                    <i className="fas fa-info-circle"></i>
+                    {lang === 'fr' ? 'Détails' : 'Details'}
+                  </button>
                 </div>
-                <div className="portfolio-result">
-                  <i className="fas fa-chart-line"></i>
-                  <span>{p.result[lang]}</span>
-                </div>
-                {p.tech && (
-                  <div className="portfolio-tech">
-                    {p.tech.map((t, ti) => (
-                      <span className="portfolio-tech-tag" key={ti}>{t}</span>
-                    ))}
+                <div className="portfolio-info">
+                  <span className="portfolio-category">{p.category[lang]}</span>
+                  <div className="portfolio-title-row">
+                    <h3 className="portfolio-title">{p.title[lang]}</h3>
                   </div>
-                )}
+                  <div className="portfolio-result">
+                    <i className="fas fa-chart-line"></i>
+                    <span>{p.result[lang]}</span>
+                  </div>
+                  {p.tech && (
+                    <div className="portfolio-tech">
+                      {p.tech.map((t, ti) => (
+                        <span className="portfolio-tech-tag" key={ti}>{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <button className="portfolio-nav-btn portfolio-nav-next" onClick={goNext}>
+            <i className="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div className="portfolio-dots">
+          {Array.from({ length: totalVisible }).map((_, i) => (
+            <button
+              key={i}
+              className={`portfolio-dot ${i === Math.floor(currentIndex / 2) ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(i * 2)}
+            ></button>
           ))}
         </div>
       </div>
