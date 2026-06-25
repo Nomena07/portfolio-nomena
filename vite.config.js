@@ -39,6 +39,9 @@ function qrcodePlugin() {
 export default defineConfig({
   plugins: [react(), qrcodePlugin()],
   base: './',
+  build: {
+    outDir: 'docs',
+  },
   server: {
     host: '0.0.0.0',
     port: 5173,
