@@ -70,18 +70,6 @@ export default function Portfolio() {
           <h2 className="section-title">{t.portfolio.title}</h2>
           <p className="section-subtitle">{t.portfolio.subtitle}</p>
         </div>
-        <div className="portfolio-filters animate-on-scroll">
-          {filters.map(f => (
-            <button
-              key={f.key}
-              className={`filter-btn ${active === f.key ? 'active' : ''}`}
-              onClick={() => setActive(f.key)}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-
         <div className="portfolio-carousel">
           <button className="portfolio-nav-btn portfolio-nav-prev" onClick={goPrev}>
             <i className="fas fa-chevron-left"></i>
