@@ -148,11 +148,11 @@ export default function AboutPage() {
           <div className="about-hero-visual animate-on-scroll">
             <div className="about-avatar-wrapper">
               <div className="about-avatar">
-                <img src="/nomena.jpg" alt="Nomena - Développeur Web" className="about-photo" />
+                <img src={`${import.meta.env.BASE_URL}nomena.jpg`} alt="Nomena - Développeur Web" className="about-photo" />
               </div>
               <div className="about-avatar-ring"></div>
             </div>
-            <a href="/CV_Tsanta_FS.pdf" download className="btn btn-primary cv-download-btn">
+            <a href={`${import.meta.env.BASE_URL}CV_Tsanta_FS.pdf`} download className="btn btn-primary cv-download-btn">
               <i className="fas fa-download"></i> {t.about.downloadCv}
             </a>
           </div>
