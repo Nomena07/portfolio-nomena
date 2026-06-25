@@ -50,9 +50,9 @@ export default function Header() {
             <>
               <Link to="/" className="nav-link">{t.nav.home}</Link>
               <Link to="/a-propos" className="nav-link active">{t.nav.about}</Link>
-              <Link to="/#services" className="nav-link">{t.nav.services}</Link>
-              <Link to="/#projet" className="nav-link">{t.nav.projet}</Link>
-              <Link to="/#contact" className="nav-link">{t.nav.contact}</Link>
+              <a href="/#services" className="nav-link">{t.nav.services}</a>
+              <a href="/#projet" className="nav-link">{t.nav.projet}</a>
+              <a href="/#contact" className="nav-link">{t.nav.contact}</a>
             </>
           )}
         </nav>
