@@ -4,7 +4,7 @@ const translations = {
       nav: {
       home: 'Accueil',
       services: 'Services',
-      portfolio: 'Projets',
+      projet: 'Projets',
       about: 'À propos',
       contact: 'Contact',
       contactBtn: 'Me contacter',
@@ -136,7 +136,7 @@ const translations = {
       ],
     },
     // PORTFOLIO
-    portfolio: {
+    projet: {
       tag: 'Mes réalisations',
       title: 'Projets récents',
       subtitle: 'Chaque projet est une histoire de succès. Découvrez comment j\'ai aidé mes clients à atteindre leurs objectifs.',
@@ -208,7 +208,7 @@ const translations = {
       ctaTitle: 'Travaillons ensemble',
       ctaDesc: 'Vous avez un projet en tête ? Discutons-en et transformons-le en réalité.',
       ctaContact: 'Me contacter',
-      ctaBack: 'Retour au portfolio',
+      ctaBack: 'Retour aux projets',
       downloadCv: 'Télécharger mon CV',
     },
     // FOOTER
@@ -227,7 +227,7 @@ const translations = {
       nav: {
       home: 'Home',
       services: 'Services',
-      portfolio: 'Projects',
+      projet: 'Projects',
       about: 'About',
       contact: 'Contact',
       contactBtn: 'Contact Me',
@@ -359,7 +359,7 @@ const translations = {
       ],
     },
     // PORTFOLIO
-    portfolio: {
+    projet: {
       tag: 'My Work',
       title: 'Recent Projects',
       subtitle: 'Every project is a success story. Discover how I helped my clients reach their goals.',
@@ -431,7 +431,7 @@ const translations = {
       ctaTitle: 'Let\'s work together',
       ctaDesc: 'Got a project in mind? Let\'s discuss it and turn it into reality.',
       ctaContact: 'Contact me',
-      ctaBack: 'Back to portfolio',
+      ctaBack: 'Back to projects',
       downloadCv: 'Download my CV',
     },
     // FOOTER

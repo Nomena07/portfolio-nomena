@@ -27,8 +27,8 @@ const testimonials = [
     gradient: "linear-gradient(135deg, #059669, #10B981)"
   },
   {
-    fr: "En tant que photographe, j'avais besoin d'un portfolio à la hauteur de mon travail. Nomena a créé un site magnifique qui met parfaitement en valeur mes photos.",
-    en: "As a photographer, I needed a portfolio that matched my work. Nomena created a beautiful website that perfectly showcases my photos.",
+    fr: "En tant que photographe, j'avais besoin d'un projet à la hauteur de mon travail. Nomena a créé un site magnifique qui met parfaitement en valeur mes photos.",
+    en: "As a photographer, I needed a projet that matched my work. Nomena created a beautiful website that perfectly showcases my photos.",
     name: "Mialy Rajoelina",
     role: { fr: "Photographe Professionnelle", en: "Professional Photographer" },
     initials: "MR",

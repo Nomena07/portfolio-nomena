@@ -16,12 +16,12 @@ export default function ScrollAnimations() {
 
     elements.forEach(el => observer.observe(el))
 
-    // Horizontal scroll fade-in for portfolio cards
-    const portfolioGrid = document.querySelector('.portfolio-grid')
-    if (portfolioGrid) {
+    // Horizontal scroll fade-in for projet cards
+    const projetGrid = document.querySelector('.projet-grid')
+    if (projetGrid) {
       const handleScroll = () => {
-        const cards = portfolioGrid.querySelectorAll('.portfolio-card')
-        const gridRect = portfolioGrid.getBoundingClientRect()
+        const cards = projetGrid.querySelectorAll('.projet-card')
+        const gridRect = projetGrid.getBoundingClientRect()
         const gridCenter = gridRect.left + gridRect.width / 2
 
         cards.forEach((card) => {
@@ -38,12 +38,12 @@ export default function ScrollAnimations() {
         })
       }
 
-      portfolioGrid.addEventListener('scroll', handleScroll)
+      projetGrid.addEventListener('scroll', handleScroll)
       handleScroll()
 
       return () => {
         observer.disconnect()
-        portfolioGrid.removeEventListener('scroll', handleScroll)
+        projetGrid.removeEventListener('scroll', handleScroll)
       }
     }
 

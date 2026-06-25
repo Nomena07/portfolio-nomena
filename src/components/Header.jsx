@@ -42,7 +42,7 @@ export default function Header() {
             <>
               <a href="#accueil" className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.home}</a>
               <a href="#services" className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.services}</a>
-              <a href="#portfolio" className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.portfolio}</a>
+              <a href="#projet" className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.projet}</a>
               <Link to="/a-propos" className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.about}</Link>
               <a href="#contact" className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.contact}</a>
             </>
@@ -51,7 +51,7 @@ export default function Header() {
               <Link to="/" className="nav-link">{t.nav.home}</Link>
               <Link to="/a-propos" className="nav-link active">{t.nav.about}</Link>
               <Link to="/#services" className="nav-link">{t.nav.services}</Link>
-              <Link to="/#portfolio" className="nav-link">{t.nav.portfolio}</Link>
+              <Link to="/#projet" className="nav-link">{t.nav.projet}</Link>
               <Link to="/#contact" className="nav-link">{t.nav.contact}</Link>
             </>
           )}

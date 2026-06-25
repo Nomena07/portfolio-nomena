@@ -52,7 +52,7 @@ export default function Hero() {
             <a href="#contact" className="btn btn-primary btn-lg">
               <i className="fas fa-paper-plane"></i> {t.hero.cta1}
             </a>
-            <a href="#portfolio" className="btn btn-secondary btn-lg">
+            <a href="#projet" className="btn btn-secondary btn-lg">
               <i className="fas fa-eye"></i> {t.hero.cta2}
             </a>
           </div>

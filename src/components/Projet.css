@@ -1,5 +1,5 @@
 /* Portfolio Section */
-.portfolio-filters {
+.projet-filters {
   display: flex;
   justify-content: center;
   gap: 8px;
@@ -25,20 +25,20 @@
 }
 
 /* Carousel */
-.portfolio-carousel {
+.projet-carousel {
   position: relative;
   display: flex;
   align-items: center;
   gap: 16px;
 }
-.portfolio-grid {
+.projet-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
   flex: 1;
   overflow: hidden;
 }
-.portfolio-card {
+.projet-card {
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--bg-card);
@@ -46,10 +46,10 @@
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
 }
-.portfolio-card.card-enter {
+.projet-card.card-enter {
   animation: cardEnter 0.5s ease forwards;
 }
-.portfolio-card.card-exit {
+.projet-card.card-exit {
   animation: cardExit 0.4s ease forwards;
 }
 @keyframes cardEnter {
@@ -60,25 +60,25 @@
   from { opacity: 1; transform: scale(1) translateY(0); }
   to { opacity: 0; transform: scale(0.85) translateY(-20px); }
 }
-.portfolio-card:hover {
+.projet-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: var(--shadow-lg);
   border-color: transparent;
 }
 
 /* Navigation buttons */
-.portfolio-nav-btn {
+.projet-nav-btn {
   display: none;
 }
 
 /* Dots */
-.portfolio-dots {
+.projet-dots {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 32px;
 }
-.portfolio-dot {
+.projet-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -87,28 +87,28 @@
   cursor: pointer;
   transition: var(--transition);
 }
-.portfolio-dot.active {
+.projet-dot.active {
   background: var(--primary);
   width: 28px;
   border-radius: 10px;
 }
 
 /* Image */
-.portfolio-image {
+.projet-image {
   position: relative;
   height: 200px;
   overflow: hidden;
 }
-.portfolio-img {
+.projet-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: var(--transition-slow);
 }
-.portfolio-card:hover .portfolio-img {
+.projet-card:hover .projet-img {
   transform: scale(1.08);
 }
-.portfolio-placeholder {
+.projet-placeholder {
   width: 100%;
   height: 100%;
   display: flex;
@@ -116,14 +116,14 @@
   justify-content: center;
   transition: var(--transition-slow);
 }
-.portfolio-placeholder i {
+.projet-placeholder i {
   font-size: 3rem;
   color: rgba(255,255,255,0.8);
 }
-.portfolio-card:hover .portfolio-placeholder {
+.projet-card:hover .projet-placeholder {
   transform: scale(1.08);
 }
-.portfolio-details-btn {
+.projet-details-btn {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -144,35 +144,35 @@
   backdrop-filter: blur(4px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.portfolio-details-btn:hover {
+.projet-details-btn:hover {
   background: var(--primary);
   color: var(--white);
   transform: translateY(-2px);
 }
-.portfolio-details-btn i { font-size: 0.7rem; }
+.projet-details-btn i { font-size: 0.7rem; }
 
 /* Info */
-.portfolio-info { padding: 20px 24px; }
-.portfolio-category {
+.projet-info { padding: 20px 24px; }
+.projet-category {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.portfolio-title-row {
+.projet-title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
 }
-.portfolio-title {
+.projet-title {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
 }
-.portfolio-result {
+.projet-result {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -184,17 +184,17 @@
   border-radius: 8px;
   margin-bottom: 12px;
 }
-.dark .portfolio-result {
+.dark .projet-result {
   background: rgba(37,99,235,0.12);
 }
-.portfolio-result i { color: var(--secondary); }
-.portfolio-tech {
+.projet-result i { color: var(--secondary); }
+.projet-tech {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 4px;
 }
-.portfolio-tech-tag {
+.projet-tech-tag {
   padding: 3px 10px;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -205,6 +205,6 @@
 }
 
 @media (max-width: 768px) {
-  .portfolio-grid { grid-template-columns: 1fr; gap: 20px; }
-  .portfolio-nav-btn { display: none; }
+  .projet-grid { grid-template-columns: 1fr; gap: 20px; }
+  .projet-nav-btn { display: none; }
 }

@@ -19,7 +19,7 @@ export default function Footer() {
           <h4 className="footer-title">{t.footer.nav}</h4>
           <Link to="/">{t.nav.home}</Link>
           <a href="/#services">{t.nav.services}</a>
-          <a href="/#portfolio">{t.nav.portfolio}</a>
+          <a href="/#projet">{t.nav.projet}</a>
           <Link to="/a-propos">{t.nav.about}</Link>
           <a href="/#contact">{t.nav.contact}</a>
         </div>

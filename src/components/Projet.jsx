@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
 import Modal from './Modal'
-import './Portfolio.css'
+import './Projet.css'
 
 const projects = [
   { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Agence Immobilière Luxe', en: 'Luxury Real Estate' }, result: { fr: '+60% de demandes de contact', en: '+60% contact requests' }, icon: 'fas fa-building', gradient: 'linear-gradient(135deg, #1E3A8A, #059669)', image: `${import.meta.env.BASE_URL}immo.png`, tech: ['Python', 'Django', 'HTML', 'CSS', 'Tailwind', 'JavaScript'], techRoles: { fr: { 'Python': 'Logique backend et traitement des données', 'Django': 'Framework web pour la gestion des biens et utilisateurs', 'HTML': 'Structure des pages et formulaires', 'CSS': 'Mise en page et styles visuels', 'Tailwind': 'Design responsive rapide et moderne', 'JavaScript': 'Interactivité et mises à jour dynamiques' }, en: { 'Python': 'Backend logic and data processing', 'Django': 'Web framework for property and user management', 'HTML': 'Page structure and forms', 'CSS': 'Layout and visual styling', 'Tailwind': 'Fast and modern responsive design', 'JavaScript': 'Interactivity and dynamic updates' } }, desc: { fr: "Application web complète pour une agence immobilière de luxe.", en: "Complete web application for a luxury real estate agency." }, details: { fr: "Plateforme complète développée avec Django pour gérer les annonces immobilières de luxe.", en: "Full platform built with Django to manage luxury real estate listings." } },
@@ -13,7 +13,7 @@ const projects = [
   { cat: 'ecommerce', category: { fr: 'E-Commerce', en: 'E-Commerce' }, title: { fr: 'Bijoux & Accessoires', en: 'Jewelry & Accessories' }, result: { fr: '2000+ followers Instagram gagnés', en: '2000+ Instagram followers gained' }, icon: 'fas fa-gem', gradient: 'linear-gradient(135deg, #3B82F6, #8B5CF6)', tech: ['HTML', 'CSS', 'JavaScript', 'Shopify'], techRoles: { fr: { 'HTML': 'Structure du catalogue bijoux', 'CSS': 'Design raffiné et luxe', 'JavaScript': 'Zoom produit et favoris', 'Shopify': 'Plateforme e-commerce complète' }, en: { 'HTML': 'Jewelry catalog structure', 'CSS': 'Refined and luxury design', 'JavaScript': 'Product zoom and favorites', 'Shopify': 'Complete e-commerce platform' } }, desc: { fr: "Boutique en ligne de bijoux artisanaux.", en: "Handmade jewelry online store." }, details: { fr: "Boutique élégante avec zoom produit et intégration Instagram.", en: "Elegant store with product zoom and Instagram integration." } },
 ]
 
-export default function Portfolio() {
+export default function Projet() {
   const [active, setActive] = useState('all')
   const [modalProject, setModalProject] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -22,10 +22,10 @@ export default function Portfolio() {
   const { lang, t } = useLanguage()
 
   const filters = [
-    { key: 'all', label: t.portfolio.filters.all },
-    { key: 'web', label: t.portfolio.filters.web },
-    { key: 'ecommerce', label: t.portfolio.filters.ecommerce },
-    { key: 'app', label: t.portfolio.filters.app },
+    { key: 'all', label: t.projet.filters.all },
+    { key: 'web', label: t.projet.filters.web },
+    { key: 'ecommerce', label: t.projet.filters.ecommerce },
+    { key: 'app', label: t.projet.filters.app },
   ]
 
   const filtered = active === 'all' ? projects : projects.filter(p => p.cat === active)
@@ -63,51 +63,51 @@ export default function Portfolio() {
 
   return (
     <>
-    <section className="section portfolio" id="portfolio">
+    <section className="section projet" id="projet">
       <div className="container">
         <div className="section-header animate-on-scroll">
-          <span className="section-tag">{t.portfolio.tag}</span>
-          <h2 className="section-title">{t.portfolio.title}</h2>
-          <p className="section-subtitle">{t.portfolio.subtitle}</p>
+          <span className="section-tag">{t.projet.tag}</span>
+          <h2 className="section-title">{t.projet.title}</h2>
+          <p className="section-subtitle">{t.projet.subtitle}</p>
         </div>
-        <div className="portfolio-carousel">
-          <button className="portfolio-nav-btn portfolio-nav-prev" onClick={goPrev}>
+        <div className="projet-carousel">
+          <button className="projet-nav-btn projet-nav-prev" onClick={goPrev}>
             <i className="fas fa-chevron-left"></i>
           </button>
 
-          <div className="portfolio-grid" ref={gridRef}>
+          <div className="projet-grid" ref={gridRef}>
             {visibleProjects.map((p, i) => (
               <div
-                className={`portfolio-card animate-on-scroll ${clickedCard === i ? 'card-exit' : 'card-enter'}`}
+                className={`projet-card animate-on-scroll ${clickedCard === i ? 'card-exit' : 'card-enter'}`}
                 key={`${p.title.en}-${currentIndex}-${i}`}
                 onClick={() => handleCardClick(i)}
               >
-                <div className="portfolio-image">
+                <div className="projet-image">
                   {p.image ? (
-                    <img src={p.image} alt={p.title[lang]} className="portfolio-img" />
+                    <img src={p.image} alt={p.title[lang]} className="projet-img" />
                   ) : (
-                    <div className="portfolio-placeholder" style={{ background: p.gradient }}>
+                    <div className="projet-placeholder" style={{ background: p.gradient }}>
                       <i className={p.icon}></i>
                     </div>
                   )}
-                  <button className="portfolio-details-btn" onClick={(e) => { e.stopPropagation(); setModalProject(p) }}>
+                  <button className="projet-details-btn" onClick={(e) => { e.stopPropagation(); setModalProject(p) }}>
                     <i className="fas fa-info-circle"></i>
                     {lang === 'fr' ? 'Détails' : 'Details'}
                   </button>
                 </div>
-                <div className="portfolio-info">
-                  <span className="portfolio-category">{p.category[lang]}</span>
-                  <div className="portfolio-title-row">
-                    <h3 className="portfolio-title">{p.title[lang]}</h3>
+                <div className="projet-info">
+                  <span className="projet-category">{p.category[lang]}</span>
+                  <div className="projet-title-row">
+                    <h3 className="projet-title">{p.title[lang]}</h3>
                   </div>
-                  <div className="portfolio-result">
+                  <div className="projet-result">
                     <i className="fas fa-chart-line"></i>
                     <span>{p.result[lang]}</span>
                   </div>
                   {p.tech && (
-                    <div className="portfolio-tech">
+                    <div className="projet-tech">
                       {p.tech.map((t, ti) => (
-                        <span className="portfolio-tech-tag" key={ti}>{t}</span>
+                        <span className="projet-tech-tag" key={ti}>{t}</span>
                       ))}
                     </div>
                   )}
@@ -116,16 +116,16 @@ export default function Portfolio() {
             ))}
           </div>
 
-          <button className="portfolio-nav-btn portfolio-nav-next" onClick={goNext}>
+          <button className="projet-nav-btn projet-nav-next" onClick={goNext}>
             <i className="fas fa-chevron-right"></i>
           </button>
         </div>
 
-        <div className="portfolio-dots">
+        <div className="projet-dots">
           {Array.from({ length: totalVisible }).map((_, i) => (
             <button
               key={i}
-              className={`portfolio-dot ${i === Math.floor(currentIndex / 2) ? 'active' : ''}`}
+              className={`projet-dot ${i === Math.floor(currentIndex / 2) ? 'active' : ''}`}
               onClick={() => setCurrentIndex(i * 2)}
             ></button>
           ))}

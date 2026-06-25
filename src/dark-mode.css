@@ -46,7 +46,7 @@
 }
 
 /* --- PORTFOLIO --- */
-.dark .portfolio-card {
+.dark .projet-card {
   background: var(--bg-card);
   border-color: var(--border-color);
 }
