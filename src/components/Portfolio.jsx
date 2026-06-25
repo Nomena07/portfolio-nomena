@@ -3,7 +3,7 @@ import { useLanguage } from '../LanguageContext'
 import './Portfolio.css'
 
 const projects = [
-  { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Agence Immobilière Luxe', en: 'Luxury Real Estate' }, result: { fr: '+60% de demandes de contact', en: '+60% contact requests' }, icon: 'fas fa-building', gradient: 'linear-gradient(135deg, #1E3A8A, #059669)', image: `${import.meta.env.BASE_URL}immo.png`, desc: { fr: "Application web complète pour une agence immobilière de luxe. Backend avec gestion des biens, comptes utilisateurs, formulaire de contact intelligent et tableau de bord administrateur.", en: "Complete web application for a luxury real estate agency. Backend with property management, user accounts, smart contact form and admin dashboard." } },
+  { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Agence Immobilière Luxe', en: 'Luxury Real Estate' }, result: { fr: '+60% de demandes de contact', en: '+60% contact requests' }, icon: 'fas fa-building', gradient: 'linear-gradient(135deg, #1E3A8A, #059669)', image: `${import.meta.env.BASE_URL}immo.png`, tech: ['Python', 'Django', 'HTML', 'CSS', 'Tailwind', 'JavaScript'], desc: { fr: "Application web complète pour une agence immobilière de luxe. Backend avec gestion des biens, comptes utilisateurs, formulaire de contact intelligent et tableau de bord administrateur.", en: "Complete web application for a luxury real estate agency. Backend with property management, user accounts, smart contact form and admin dashboard." } },
   { cat: 'web', category: { fr: 'Site Vitrine', en: 'Website' }, title: { fr: 'Chumet', en: 'Chumet' }, result: { fr: '+40% de visibilité locale', en: '+40% local visibility' }, icon: 'fas fa-store', gradient: 'linear-gradient(135deg, #10B981, #3B82F6)', image: `${import.meta.env.BASE_URL}chumet.png`, desc: { fr: "Site vitrine moderne pour Chumet. Présence en ligne professionnelle avec présentation des services, galerie photos et formulaire de contact.", en: "Modern showcase website for Chumet. Professional online presence with services presentation, photo gallery and contact form." } },
   { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Assistant Étudiant IA', en: 'AI Student Assistant' }, result: { fr: '+70% de productivité étudiante', en: '+70% student productivity' }, icon: 'fas fa-robot', gradient: 'linear-gradient(135deg, #8B5CF6, #06B6D4)', image: `${import.meta.env.BASE_URL}assited.png`, desc: { fr: "Application web intelligente assistée par IA pour aider les étudiants. Planification de cours, quiz adaptatifs, aide à la rédaction et suivi de progression personnalisé.", en: "Smart AI-powered web application to help students. Course planning, adaptive quizzes, writing assistance and personalized progress tracking." } },
   { cat: 'ecommerce', category: { fr: 'E-Commerce', en: 'E-Commerce' }, title: { fr: 'Boutique Mode Afro', en: 'African Fashion Store' }, result: { fr: '+45% de ventes en 3 mois', en: '+45% sales in 3 months' }, icon: 'fas fa-store', gradient: 'linear-gradient(135deg, #7C3AED, #EC4899)', desc: { fr: "Boutique en ligne complète pour une marque de mode africaine. Catalogue produits, panier intelligent, paiement sécurisé et suivi de commandes.", en: "Complete online store for an African fashion brand. Product catalog, smart cart, secure payment and order tracking." } },
@@ -66,6 +66,13 @@ export default function Portfolio() {
                   <i className="fas fa-chart-line"></i>
                   <span>{p.result[lang]}</span>
                 </div>
+                {p.tech && (
+                  <div className="portfolio-tech">
+                    {p.tech.map((t, ti) => (
+                      <span className="portfolio-tech-tag" key={ti}>{t}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}
