@@ -131,6 +131,23 @@
   font-size: 0.8rem;
   font-weight: 600;
 }
+.modal-tech-section {
+  margin-bottom: 20px;
+}
+.modal-tech-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal-tech-role {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.modal-tech-role-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
 .modal-features {
   list-style: none;
   display: grid;
