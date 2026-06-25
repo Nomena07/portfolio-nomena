@@ -3,7 +3,7 @@ import { useLanguage } from '../LanguageContext'
 import './Portfolio.css'
 
 const projects = [
-  { cat: 'web', category: { fr: 'Site Vitrine', en: 'Website' }, title: { fr: 'Agence Immobilière Luxe', en: 'Luxury Real Estate' }, result: { fr: '+60% de demandes de contact', en: '+60% contact requests' }, icon: 'fas fa-building', gradient: 'linear-gradient(135deg, #1E3A8A, #059669)', desc: { fr: "Site vitrine moderne pour une agence immobilière de luxe. Design élégant, photos HD et formulaire de contact intégré. Les visiteurs peuvent facilement consulter les biens et demander des visites.", en: "Modern showcase website for a luxury real estate agency. Elegant design, HD photos and integrated contact form. Visitors can easily browse properties and request viewings." } },
+  { cat: 'web', category: { fr: 'Site Vitrine', en: 'Website' }, title: { fr: 'Agence Immobilière Luxe', en: 'Luxury Real Estate' }, result: { fr: '+60% de demandes de contact', en: '+60% contact requests' }, icon: 'fas fa-building', gradient: 'linear-gradient(135deg, #1E3A8A, #059669)', image: `${import.meta.env.BASE_URL}immo.png`, desc: { fr: "Site vitrine moderne pour une agence immobilière de luxe. Design élégant, photos HD et formulaire de contact intégré. Les visiteurs peuvent facilement consulter les biens et demander des visites.", en: "Modern showcase website for a luxury real estate agency. Elegant design, HD photos and integrated contact form. Visitors can easily browse properties and request viewings." } },
   { cat: 'ecommerce', category: { fr: 'E-Commerce', en: 'E-Commerce' }, title: { fr: 'Boutique Mode Afro', en: 'African Fashion Store' }, result: { fr: '+45% de ventes en 3 mois', en: '+45% sales in 3 months' }, icon: 'fas fa-store', gradient: 'linear-gradient(135deg, #7C3AED, #EC4899)', desc: { fr: "Boutique en ligne complète pour une marque de mode africaine. Catalogue produits, panier intelligent, paiement sécurisé et suivi de commandes.", en: "Complete online store for an African fashion brand. Product catalog, smart cart, secure payment and order tracking." } },
   { cat: 'app', category: { fr: 'Application Web', en: 'Web App' }, title: { fr: 'Plateforme Réservation', en: 'Booking Platform' }, result: { fr: 'Gain de 15h/semaine automatisé', en: '15h/week saved through automation' }, icon: 'fas fa-calendar-check', gradient: 'linear-gradient(135deg, #059669, #10B981)', desc: { fr: "Application de réservation en ligne pour un hôtel. Calendrier interactif, paiement en ligne, confirmation automatique par email et SMS.", en: "Online booking application for a hotel. Interactive calendar, online payment, automatic confirmation by email and SMS." } },
   { cat: 'web', category: { fr: 'Site Vitrine', en: 'Website' }, title: { fr: 'Restaurant Gastronomique', en: 'Gastronomic Restaurant' }, result: { fr: 'Notes Google 3.8 → 4.7', en: 'Google rating 3.8 → 4.7' }, icon: 'fas fa-utensils', gradient: 'linear-gradient(135deg, #F59E0B, #EF4444)', desc: { fr: "Site vitrine pour un restaurant gastronomique. Menu interactif, galerie photos, système de réservation de tables et avis clients intégrés.", en: "Showcase website for a gastronomic restaurant. Interactive menu, photo gallery, table reservation system and integrated customer reviews." } },
@@ -47,9 +47,13 @@ export default function Portfolio() {
           {filtered.map((p, i) => (
             <div className="portfolio-card animate-on-scroll" key={`${p.title.en}-${i}`}>
               <div className="portfolio-image">
-                <div className="portfolio-placeholder" style={{ background: p.gradient }}>
-                  <i className={p.icon}></i>
-                </div>
+                {p.image ? (
+                  <img src={p.image} alt={p.title[lang]} className="portfolio-img" />
+                ) : (
+                  <div className="portfolio-placeholder" style={{ background: p.gradient }}>
+                    <i className={p.icon}></i>
+                  </div>
+                )}
               </div>
               <div className="portfolio-info">
                 <span className="portfolio-category">{p.category[lang]}</span>
