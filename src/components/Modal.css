@@ -119,6 +119,18 @@
   line-height: 1.8;
   margin-bottom: 20px;
 }
+.modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.modal-tech-tag {
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
 .modal-features {
   list-style: none;
   display: grid;
